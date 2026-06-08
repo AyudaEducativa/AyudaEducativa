@@ -1,0 +1,380 @@
+/* --- Variables y Configuración Base (Paleta del Logo) --- */
+:root {
+    --bg-dark: #0b0f19;
+    --text-light: #ffffff;
+    --text-muted: #a0aec0;
+    
+    /* Colores extraídos de tu logo */
+    --primary: #1E9B9C; /* Verde Azulado (Teal) */
+    --secondary: #F28C28; /* Naranja */
+    --accent-blue: #1A5B8B; /* Azul oscuro */
+    
+    --whatsapp: #25D366;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- Fondos Animados --- */
+.glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: -1;
+    opacity: 0.5;
+    animation: float-blob 12s infinite ease-in-out alternate;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--primary), var(--accent-blue));
+    top: -100px;
+    left: -100px;
+}
+
+.blob-2 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, var(--secondary), #ffb347);
+    bottom: 100px;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+/* --- Tipografía Animada --- */
+.gradient-text {
+    background: linear-gradient(to right, var(--primary), var(--secondary), var(--primary));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: text-shine 3s linear infinite;
+}
+
+/* --- Navegación Glassmorphism --- */
+.glass-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(11, 15, 25, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 100;
+}
+
+/* Contenedor del Logo (Imagen + Texto alineados) */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre la imagen y el texto */
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+.logo-img {
+    height: 50px; /* Tamaño ideal para que conviva con el texto */
+    width: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(30, 155, 156, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+.logo-text span { color: var(--primary); }
+
+.main-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover { color: var(--secondary); }
+.main-nav a:hover::after { width: 100%; }
+
+/* --- Botones --- */
+.btn-primary, .btn-secondary, .btn-whatsapp {
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary), var(--accent-blue));
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 155, 156, 0.4);
+}
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(30, 155, 156, 0.6);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--secondary);
+}
+.btn-secondary:hover {
+    background: var(--glass-bg);
+    box-shadow: 0 0 15px rgba(242, 140, 40, 0.3);
+}
+
+.btn-whatsapp {
+    background: var(--whatsapp);
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    position: relative;
+}
+.btn-whatsapp:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+/* --- Sección Hero --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    padding-top: 80px;
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: float-content 6s ease-in-out infinite alternate;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* --- Sección Servicios / Materiales --- */
+.services {
+    padding: 5rem 5% 10rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px rgba(242, 140, 40, 0.15);
+}
+
+.glass-card:hover::before {
+    transform: translateX(100%);
+}
+
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, var(--primary), var(--accent-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.glass-card:hover .icon-wrapper {
+    transform: rotate(10deg) scale(1.1);
+    background: linear-gradient(135deg, var(--secondary), #ffb347);
+}
+
+.glass-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.glass-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --- Botón Flotante de WhatsApp Animado --- */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background-color: var(--whatsapp);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    animation: pulse-whatsapp 2s infinite;
+    transition: transform 0.3s ease;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+/* --- Animaciones Keyframes --- */
+@keyframes float-blob {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.1); }
+}
+
+@keyframes float-content {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
+@keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@keyframes text-shine {
+    to { background-position: 200% center; }
+}
+
+/* --- Diseño Responsivo (Móviles) --- */
+@media (max-width: 768px) {
+    .hero { padding-top: 170px; }
+    .hero h1 { font-size: 2.4rem; }
+    
+    .glass-nav { 
+        flex-direction: column; 
+        justify-content: center;
+        gap: 15px;
+        padding: 1rem;
+    }
+
+    /* Ajustes del logo combinado en móvil */
+    .logo-img { height: 42px; }
+    .logo-text { font-size: 1.3rem; }
+
+    .main-nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .main-nav a { margin: 0; }
+
+    .header-btn { display: none; }
+
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .hero-buttons a { justify-content: center; }
+}
